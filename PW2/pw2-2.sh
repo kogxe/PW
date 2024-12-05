@@ -25,7 +25,7 @@ mkfs -t $fstype /dev/$disctype
 
 mount /dev/$disctype /storage
 
-partuuid=$(lsblk -o   name,partuuid  /dev/sdb1|awk '{print$2}' |tail -n 1)
+partuuid=$(lsblk -o   name,partuuid  /dev/$disctype|awk '{print$2}' |tail -n 1)
 
 cat<<EOF>> /etc/fstab 
 #PARTUUID=$partuuid  /storage  $fstype defaults  0  2
